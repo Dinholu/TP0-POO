@@ -9,13 +9,15 @@ namespace ConsoleApp1
 {
     internal class Program
     {
-
-        // fonction qui renvoie prenom et nom
         public static string GetFullName(string firstName, string name)
         {
             return firstName.ToLower() + " " + name.ToUpper();
         }
-
+        public static float GetIMC(float weight, int size)
+        {
+            float sizeInMeters = size / 100f;
+            return weight / (sizeInMeters * sizeInMeters);
+        }
 
         public static void GetIMCComment(float yourImc)
         {
@@ -57,14 +59,12 @@ namespace ConsoleApp1
             }
 
         }
-        // fonction qui renvoie l'IMC
-        public static float GetIMC(float weight, int size)
-        {
-            size = size / 100;
-            return weight /(size * size);
-        }
+        
+
         static void Main(string[] args)
         {
+            Console.WriteLine("----------------------------------------------------");
+            Console.WriteLine("----------------------------------------------------");
             Console.WriteLine("A. Au commencement");
             Console.WriteLine("\n");
             Console.WriteLine("----------------------------------------------------");
@@ -80,42 +80,71 @@ namespace ConsoleApp1
 
             Console.Write("Ta taille en (cm) : ");
             int size = int.Parse(Console.ReadLine());
-            Console.Write("Ton poids (en kg): ");
+            Console.Write("Ton poids (en kg) : ");
             float weight = float.Parse(Console.ReadLine());
             Console.Write("ton age : ");
             int age = int.Parse(Console.ReadLine());
 
 
-            Console.WriteLine(age < 18 ? "Tu n'es qu'une pauvre petite merde" : "Va payer tes impots");
-
+            Console.WriteLine(age < 18 ? "Tu n'es qu'une pauvre petite merde !" : "Va payer tes impots !");
+            Console.WriteLine("\n");
+            Console.WriteLine("----------------------------------------------------");
             Console.WriteLine("----------------------------------------------------");
             Console.WriteLine("B. La suite du commencement");
+            Console.WriteLine("----------------------------------------------------");
+            Console.WriteLine("\n");
 
-            Console.WriteLine("Voila ton nom et prenom formatté : " + GetFullName(firstName, name));
+            Console.WriteLine("Voila ton nom et prenom formatés correctement : " + GetFullName(firstName, name));
 
             float yourImc = GetIMC(weight, size);
 
-            Console.WriteLine("Voila ton imc : " + yourImc);
-            Console.WriteLine("----------------------------------------------------");
-            Console.WriteLine("La continuité de la suite du début…");
+            Console.WriteLine("Voila ton imc : " + yourImc.ToString("0.0"));
+            Console.WriteLine("\n");
 
+            Console.WriteLine("----------------------------------------------------"); 
+            Console.WriteLine("----------------------------------------------------");
+            Console.WriteLine("C. La continuité de la suite du début…");
+            Console.WriteLine("\n");
 
             GetIMCComment(yourImc);
 
-            int hairCount = 0;
+            int hairMin = 100000;
+            int hairMax = 150000;
+            int hairEstimation = 0;
 
-            while(hairCount > 100000 && hairCount < 1500000 )
+            do
             {
-                Console.WriteLine("Combien de cheveux avez-vous sur la tête");
-                hairCount = int.Parse(Console.ReadLine());
+                Console.Write("Estimez le nombre de cheveux sur votre tête : ");
+                string input = Console.ReadLine();
 
-                if 
-            }
+                if (int.TryParse(input, out hairEstimation))
+                {
+                    if (hairEstimation >= hairMin && hairEstimation <= hairMax)
+                    {
+                        Console.WriteLine("Estimation valide !");
+                        break; 
+                    }
+                    else
+                    {
+                        Console.WriteLine("L'estimation doit être comprise entre " + hairMin + " et " + hairMax + ".");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Veuillez entrer un nombre valide.");
+                }
+            } while (true); 
+
+
+
 
             Console.ReadLine();
 
-           
-            
         }
+
+
+
+
+
     }
 }
