@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading;
 
-namespace ConsoleApp1
+namespace TP0
 {
     internal class Program
     {
@@ -16,11 +16,11 @@ namespace ConsoleApp1
             }
             return;
         }
-        public static void CallTata()
+        public static void CallAuntie()
         {
             Console.WriteLine("Quelle est le numero de votre tante");
             int num = int.Parse(Console.ReadLine());
-            Console.Write("Appel en cours.");
+            Console.Write(num +" Appel en cours.");
             Thread.Sleep(400);
             Console.Write(".");
             Thread.Sleep(400);
@@ -96,7 +96,6 @@ namespace ConsoleApp1
                     return false;
                 }
             }
-
             return true;
         }
 
@@ -105,134 +104,135 @@ namespace ConsoleApp1
         {
             int endProgram = 0;
             do { 
-            Console.WriteLine("----------------------------------------------------");
-            Console.WriteLine("----------------------------------------------------");
-            Console.WriteLine("Bienvenue sur mon programme, jeune étranger imberbe");
-            Console.WriteLine("----------------------------------------------------");
-            Console.WriteLine("----------------------------------------------------");
-            Console.WriteLine("\n");
+                Console.WriteLine("----------------------------------------------------");
+                Console.WriteLine("----------------------------------------------------");
+                Console.WriteLine("Bienvenue sur mon programme, jeune étranger imberbe");
+                Console.WriteLine("----------------------------------------------------");
+                Console.WriteLine("----------------------------------------------------");
+                Console.WriteLine("\n");
 
 
-            string name = "";
-            string firstName = "";
-            while (string.IsNullOrWhiteSpace(name) || !IsNameValid(name))
-            {
-               Console.Write("Donne moi ton nom, vil chenapan : ");
-               name = Console.ReadLine();
-               name.Trim();
-            }
-
-            while (string.IsNullOrWhiteSpace(firstName) || !IsNameValid(firstName))
-            {
-               Console.Write("Et quel est ton prénom, petit galopin : ");
-               firstName = Console.ReadLine();
-               firstName.Trim();
-            }
-
-            Console.WriteLine($"Bonjour, {GetFullName(firstName, name)} !");
-            Console.Write("Ta taille en (cm) : ");
-            int size = int.Parse(Console.ReadLine());
-            Console.Write("Ton poids (en kg) : ");
-            float weight = float.Parse(Console.ReadLine());
-            Console.Write("ton age : ");
-            int age = int.Parse(Console.ReadLine());
-
-            do
-            {
-                if (size <= 0)
+                string name = "";
+                string firstName = "";
+                while (string.IsNullOrWhiteSpace(name) || !IsNameValid(name))
                 {
-                    Console.Write("Veuillez entrer une taille valide : ");
-                    size = int.Parse(Console.ReadLine());
-                }
-                else if (weight <= 0) {
-                    Console.Write("Veuillez entrer un poids valide : ");
-                    weight = float.Parse(Console.ReadLine());
-                }
-                else if (age <= 0)
-                {
-                    Console.Write("Veuillez entrer un age valide : ");
-                    age = int.Parse(Console.ReadLine());
-                }
-                else
-                {
-                    break;
+                   Console.Write("Donne moi ton nom, vil chenapan : ");
+                   name = Console.ReadLine();
+                   name.Trim();
                 }
 
-            } while (true);
-
-
-            Console.WriteLine(age < 18 ? "Tu n'es qu'une pauvre petite merde !" : "Va payer tes impots !");
-
-            float yourImc = GetIMC(weight, size);
-
-            Console.WriteLine("Voilà ton IMC : " + yourImc.ToString("0.0"));
-            Console.WriteLine("Commentaire : " + GetIMCComment(yourImc));
-
-            Console.WriteLine("----------------------------------------------------");
-
-            int hairMin = 100000;
-            int hairMax = 150000;
-            do
-            {
-                Console.Write("Estimez le nombre de cheveux sur votre tête : ");
-                string input = Console.ReadLine();
-
-                if (int.TryParse(input, out int hairEstimation))
+                while (string.IsNullOrWhiteSpace(firstName) || !IsNameValid(firstName))
                 {
-                    if (hairEstimation >= hairMin && hairEstimation <= hairMax)
+                   Console.Write("Et quel est ton prénom, petit galopin : ");
+                   firstName = Console.ReadLine();
+                   firstName.Trim();
+                }
+
+                Console.WriteLine($"Bonjour, {GetFullName(firstName, name)} !");
+             
+
+                Console.Write("Ta taille en (cm) : ");
+                int size = int.Parse(Console.ReadLine());
+                Console.Write("Ton poids (en kg) : ");
+                float weight = float.Parse(Console.ReadLine());
+                Console.Write("ton age : ");
+                int age = int.Parse(Console.ReadLine());
+
+                do
+                {
+                    if (size <= 0)
                     {
-                        Console.WriteLine("Estimation valide !");
-                        break;
+                        Console.Write("Veuillez entrer une taille valide : ");
+                        size = int.Parse(Console.ReadLine());
+                    }
+                    else if (weight <= 0) {
+                        Console.Write("Veuillez entrer un poids valide : ");
+                        weight = float.Parse(Console.ReadLine());
+                    }
+                    else if (age <= 0)
+                    {
+                        Console.Write("Veuillez entrer un age valide : ");
+                        age = int.Parse(Console.ReadLine());
                     }
                     else
                     {
-                        Console.WriteLine("L'estimation doit être comprise entre " + hairMin + " et " + hairMax + ".");
+                        break;
                     }
-                }
-                else
+
+                } while (true);
+
+
+                Console.WriteLine(age < 18 ? "Tu n'es qu'une pauvre petite merde !" : "Va payer tes impots !");
+
+                float yourImc = GetIMC(weight, size);
+
+                Console.WriteLine("Voilà ton IMC : " + yourImc.ToString("0.0"));
+                Console.WriteLine("Commentaire : " + GetIMCComment(yourImc));
+
+                Console.WriteLine("----------------------------------------------------");
+
+                int hairMin = 100000;
+                int hairMax = 150000;
+                do
                 {
-                    Console.WriteLine("Veuillez entrer un nombre valide.");
-                }
-            } while (true);
+                    Console.Write("Estimez le nombre de cheveux sur votre tête : ");
+                    string input = Console.ReadLine();
+
+                    if (int.TryParse(input, out int hairEstimation))
+                    {
+                        if (hairEstimation >= hairMin && hairEstimation <= hairMax)
+                        {
+                            Console.WriteLine("Estimation valide !");
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("L'estimation doit être comprise entre " + hairMin + " et " + hairMax + ".");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Veuillez entrer un nombre valide.");
+                    }
+                } while (true);
 
 
-            int end = 0;
+                int end = 0;
 
-            do
-            {
-                Console.WriteLine("----------------------------------------------------");
-                Console.WriteLine("----------------------------------------------------");
-                Console.WriteLine("Vous avez fini, que voulez vous faire ? \n 1 - Quitter le programme \n 2 - Recommencer le programme \n 3 - Compter jusqu'à 10 \n 4 - Téléphoner à Tata Jacqueline");
-                Console.WriteLine("----------------------------------------------------");
-                Console.WriteLine("----------------------------------------------------");
+                    do
+                    {
+                        Console.WriteLine("----------------------------------------------------");
+                        Console.WriteLine("----------------------------------------------------");
+                        Console.WriteLine("Vous avez fini, que voulez vous faire ? \n 1 - Quitter le programme \n 2 - Recommencer le programme \n 3 - Compter jusqu'à 10 \n 4 - Téléphoner à Tata Jacqueline");
+                        Console.WriteLine("----------------------------------------------------");
+                        Console.WriteLine("----------------------------------------------------");
 
-                int choice = int.Parse(Console.ReadLine());
+                        int choice = int.Parse(Console.ReadLine());
 
-                switch (choice)
-                {
-                    case 1:
-                        Console.WriteLine("Aurevoir petit sacripan (Oui j'ai des expressions de vieille)");
-                        Thread.Sleep(3000);
-                            endProgram = 1;
-                            end = 1;
-                        break;
-                    case 2:
-                        end = 1;
-                        break;
-                    case 3:
-                        Count();
-                        break;
-                    case 4:
-                        CallTata();
-                        break;
-                    default:
-                        Console.WriteLine("Veuillez choisir une valeur pausible");
-                        break;
-                }
-            }
-            while (end == 0);
-            }
-            while(endProgram == 0 );
+                        switch (choice)
+                        {
+                            case 1:
+                                Console.WriteLine("Aurevoir petit sacripan (Oui j'ai des expressions de vieille)");
+                                Thread.Sleep(3000);
+                                    endProgram = 1;
+                                    end = 1;
+                                break;
+                            case 2:
+                                end = 1;
+                                break;
+                            case 3:
+                                Count();
+                                break;
+                            case 4:
+                                CallAuntie();
+                                break;
+                            default:
+                                Console.WriteLine("Veuillez choisir une valeur pausible");
+                                break;
+                        }
+                    }
+                    while (end == 0);
+            } while(endProgram == 0 );
             return;
         }
     }
