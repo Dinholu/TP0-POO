@@ -65,16 +65,15 @@ namespace ConsoleApp1
         {
             Console.WriteLine("----------------------------------------------------");
             Console.WriteLine("----------------------------------------------------");
-            Console.WriteLine("A. Au commencement");
-            Console.WriteLine("\n");
-            Console.WriteLine("----------------------------------------------------");
             Console.WriteLine("Bienvenue sur mon programme, jeune étranger imberbe");
+            Console.WriteLine("----------------------------------------------------");
             Console.WriteLine("----------------------------------------------------");
             Console.WriteLine("\n");
             Console.Write("Donne moi ton nom, vil chenapan : ");
 
+
             string name = Console.ReadLine();
-            Console.Write("Et quel est ton prénom, petit galopin :");
+            Console.Write("Et quel est ton prénom, petit galopin : ");
             string firstName = Console.ReadLine();
             Console.WriteLine("Bonjour {0} {1} !", firstName, name);
 
@@ -84,6 +83,40 @@ namespace ConsoleApp1
             float weight = float.Parse(Console.ReadLine());
             Console.Write("ton age : ");
             int age = int.Parse(Console.ReadLine());
+
+            do
+            {
+                if (name.Any(char.IsDigit))
+                {
+                    Console.Write("Veuillez entrer un nom valide : ");
+                    name = Console.ReadLine();
+                }
+                else if (firstName.Any(char.IsDigit))
+                {
+                    Console.Write("Veuillez entrer un prénom valide : ");
+                    firstName = Console.ReadLine();
+
+                }
+                else if (size <= 0)
+                {
+                    Console.Write("Veuillez entrer une taille valide : ");
+                    size = int.Parse(Console.ReadLine());
+                }
+                else if (weight<= 0) {
+                    Console.Write("Veuillez entrer un poids valide : ");
+                    weight = float.Parse(Console.ReadLine());
+                }
+                else if (age <= 0)
+                {
+                    Console.Write("Veuillez entrer un age valide : ");
+                    age = int.Parse(Console.ReadLine());
+                }
+                else
+                {
+                    break;
+                }
+               
+            } while (true); 
 
 
             Console.WriteLine(age < 18 ? "Tu n'es qu'une pauvre petite merde !" : "Va payer tes impots !");
@@ -134,9 +167,6 @@ namespace ConsoleApp1
                     Console.WriteLine("Veuillez entrer un nombre valide.");
                 }
             } while (true); 
-
-
-
 
             Console.ReadLine();
 
