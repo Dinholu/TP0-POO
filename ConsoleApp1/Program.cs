@@ -30,8 +30,6 @@ namespace TP0
             Thread.Sleep(1000);
             Console.WriteLine("...Bip...");
             Thread.Sleep(500);
-            Console.WriteLine("...Bip...");
-            Thread.Sleep(500);
             Console.WriteLine("..Clic... Allo?... Allo? Et non vous vous êtes fait avoir, je ne suis pas la, laissez moi un message après le bip ! ");
             return;
         }
@@ -129,38 +127,25 @@ namespace TP0
                 }
 
                 Console.WriteLine($"Bonjour, {GetFullName(firstName, name)} !");
-             
 
-                Console.Write("Ta taille en (cm) : ");
-                int size = int.Parse(Console.ReadLine());
-                Console.Write("Ton poids (en kg) : ");
-                float weight = float.Parse(Console.ReadLine());
-                Console.Write("ton age : ");
-                int age = int.Parse(Console.ReadLine());
+                int size;
+                float weight;
+                int age;
 
                 do
                 {
-                    if (size <= 0)
-                    {
-                        Console.Write("Veuillez entrer une taille valide : ");
-                        size = int.Parse(Console.ReadLine());
-                    }
-                    else if (weight <= 0) {
-                        Console.Write("Veuillez entrer un poids valide : ");
-                        weight = float.Parse(Console.ReadLine());
-                    }
-                    else if (age <= 0)
-                    {
-                        Console.Write("Veuillez entrer un age valide : ");
-                        age = int.Parse(Console.ReadLine());
-                    }
-                    else
-                    {
-                        break;
-                    }
+                    Console.Write("Ta taille en (cm) : ");
+                } while (!int.TryParse(Console.ReadLine(), out size) || size <= 0);
 
-                } while (true);
+                do
+                {
+                    Console.Write("Ton poids (en kg) : ");
+                } while (!float.TryParse(Console.ReadLine(), out weight) || weight <= 0);
 
+                do
+                {
+                    Console.Write("Ton age : ");
+                } while (!int.TryParse(Console.ReadLine(), out age) || age <= 0);
 
                 Console.WriteLine(age < 18 ? "Tu n'es qu'une pauvre petite merde !" : "Va payer tes impots !");
 
@@ -225,6 +210,7 @@ namespace TP0
                                 break;
                             case 4:
                                 CallAuntie();
+                            Thread.Sleep(1000);
                                 break;
                             default:
                                 Console.WriteLine("Veuillez choisir une valeur pausible");
