@@ -18,19 +18,34 @@ namespace TP0
         }
         public static void CallAuntie()
         {
-            Console.WriteLine("Quelle est le numero de votre tante");
-            int num = int.Parse(Console.ReadLine());
-            Console.Write(num +" Appel en cours.");
-            Thread.Sleep(400);
-            Console.Write(".");
-            Thread.Sleep(400);
-            Console.WriteLine(".");
-            Thread.Sleep(400);
-            Console.WriteLine("...Bip...");
-            Thread.Sleep(1000);
-            Console.WriteLine("...Bip...");
-            Thread.Sleep(500);
-            Console.WriteLine("..Clic... Allo?... Allo? Et non vous vous êtes fait avoir, je ne suis pas la, laissez moi un message après le bip ! ");
+                Console.Write(" Appel en cours.");
+                Thread.Sleep(400);
+                Console.Write(".");
+                Thread.Sleep(400);
+                Console.WriteLine(".");
+                Thread.Sleep(400);
+                Console.Write(".");
+                Thread.Sleep(400);
+                Console.Write(".");
+                Thread.Sleep(400);
+                Console.Write(".");
+                Thread.Sleep(400);
+                Console.Write("Bip");
+                Thread.Sleep(400);
+                Console.Write(".");
+                Thread.Sleep(400);
+                Console.Write(".");
+                Thread.Sleep(400);
+                Console.WriteLine(".");
+                Thread.Sleep(1000);
+                Console.Write("..Clic...");
+                Thread.Sleep(1000);
+                Console.Write("Allo?...");
+                Thread.Sleep(1000);
+                Console.Write("Allo?...");
+                Thread.Sleep(1000);
+                Console.WriteLine("Et non vous vous êtes fait avoir, je ne suis pas la, laissez moi un message après le bip ! ");
+                Thread.Sleep(1000);
             return;
         }
         public static string GetFullName(string firstName, string name)
@@ -104,7 +119,7 @@ namespace TP0
             do { 
                 Console.WriteLine("----------------------------------------------------");
                 Console.WriteLine("----------------------------------------------------");
-                Console.WriteLine("Bienvenue sur mon programme, jeune étranger imberbe");
+                Console.WriteLine("Bienvenue sur mon programme, jeune étranger imberbe !");
                 Console.WriteLine("----------------------------------------------------");
                 Console.WriteLine("----------------------------------------------------");
                 Console.WriteLine("\n");
@@ -116,14 +131,14 @@ namespace TP0
                 {
                    Console.Write("Donne moi ton nom, vil chenapan : ");
                    name = Console.ReadLine();
-                   name.Trim();
+                   name = name.Trim();
                 }
 
                 while (string.IsNullOrWhiteSpace(firstName) || !IsNameValid(firstName))
                 {
                    Console.Write("Et quel est ton prénom, petit galopin : ");
                    firstName = Console.ReadLine();
-                   firstName.Trim();
+                   firstName = firstName.Trim();
                 }
 
                 Console.WriteLine($"Bonjour, {GetFullName(firstName, name)} !");
@@ -147,14 +162,14 @@ namespace TP0
                     Console.Write("Ton age : ");
                 } while (!int.TryParse(Console.ReadLine(), out age) || age <= 0);
 
-                Console.WriteLine(age < 18 ? "Tu n'es qu'une pauvre petite merde !" : "Va payer tes impots !");
+                Console.WriteLine(age < 18 ? "Qu'est ce que tu fais ici? Allez hop un pipi et au lit!" : "Tu penses que tu as le temps pour ca ? Va payer tes impots !");
 
                 float yourImc = GetIMC(weight, size);
 
-                Console.WriteLine("Voilà ton IMC : " + yourImc.ToString("0.0"));
+                Console.WriteLine("\n Voilà ton IMC : " + yourImc.ToString("0.0"));
                 Console.WriteLine("Commentaire : " + GetIMCComment(yourImc));
 
-                Console.WriteLine("----------------------------------------------------");
+                Console.WriteLine("\n----------------------------------------------------");
 
                 int hairMin = 100000;
                 int hairMax = 150000;
@@ -184,16 +199,15 @@ namespace TP0
 
                 int end = 0;
 
-                    do
-                    {
-                        Console.WriteLine("----------------------------------------------------");
-                        Console.WriteLine("----------------------------------------------------");
-                        Console.WriteLine("Vous avez fini, que voulez vous faire ? \n 1 - Quitter le programme \n 2 - Recommencer le programme \n 3 - Compter jusqu'à 10 \n 4 - Téléphoner à Tata Jacqueline");
-                        Console.WriteLine("----------------------------------------------------");
-                        Console.WriteLine("----------------------------------------------------");
-
-                        int choice = int.Parse(Console.ReadLine());
-
+                do
+                {
+                    Console.WriteLine("----------------------------------------------------");
+                    Console.WriteLine("----------------------------------------------------");
+                    Console.WriteLine("Vous avez fini, que voulez vous faire ? \n 1 - Quitter le programme \n 2 - Recommencer le programme \n 3 - Compter jusqu'à 10 \n 4 - Téléphoner à Tata Jacqueline");
+                    Console.WriteLine("----------------------------------------------------");
+                    Console.WriteLine("----------------------------------------------------");
+                    Console.Write("Quel est votre choix ? : ");
+                    if (int.TryParse(Console.ReadLine(), out int choice)) { 
                         switch (choice)
                         {
                             case 1:
@@ -213,10 +227,17 @@ namespace TP0
                             Thread.Sleep(1000);
                                 break;
                             default:
-                                Console.WriteLine("Veuillez choisir une valeur pausible");
+                                Console.WriteLine("Veuillez choisir une valeur plausible");
                                 break;
                         }
                     }
+                    else
+                    {
+
+                        Console.WriteLine("\n Arrête de jouer au con !!! \n");
+
+                    }
+                }
                     while (end == 0);
             } while(endProgram == 0 );
             return;
