@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Threading;
 
 namespace TP0
@@ -125,8 +124,8 @@ namespace TP0
                 Console.WriteLine("\n");
 
 
-                string name = "";
-                string firstName = "";
+                string name = string.Empty;
+                string firstName = string.Empty;
                 while (string.IsNullOrWhiteSpace(name) || !IsNameValid(name))
                 {
                    Console.Write("Donne moi ton nom, vil chenapan : ");
